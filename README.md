@@ -1,2 +1,2 @@
-# Applied_Project
+# Applied Project
 4th Year Project
