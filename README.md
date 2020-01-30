@@ -1,5 +1,5 @@
 # Spot Finder Android Application
-4th Year Project - developed by Sean Moylan and Shane Moran
+4th Year Project - developed by Sean Moylan and Shane Moran <br>
 Supervisor: Martin Kenirons
 
 ## Overview 
