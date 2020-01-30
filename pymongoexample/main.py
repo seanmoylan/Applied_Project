@@ -7,5 +7,5 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def index():
     user_collection = mongo.db.users
-    user_collection.insert({'name':'Anthony'})
+    user_collection.insert({'name':'Shane'})
     return '<h1>Added a User!</h1>'
