@@ -7,20 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:paddingTop="300dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello"
-        android:textSize="30sp"
-        android:layout_gravity="center"/>
 
-    <Button
-        android:id="@+id/locationBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Get Location" />
 
 
 </LinearLayout>
