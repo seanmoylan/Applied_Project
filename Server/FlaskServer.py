@@ -6,6 +6,11 @@ Adapted partly from: https://android.jlelse.eu/handmade-backend-for-android-app-
 
 # Imports
 import flask as fl
+from pymongo import MongoClient
+
+
+
+client = MongoClient()
 
 
 # Flask instance
