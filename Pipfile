@@ -8,6 +8,8 @@ pylint = "<2.0.0"
 
 [packages]
 flask-mongoengine = "*"
+flask = "*"
+mongoengine = "*"
 
 [requires]
 python_version = "2.7"
