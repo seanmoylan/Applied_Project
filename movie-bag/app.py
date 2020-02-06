@@ -6,7 +6,7 @@ import json
 app = Flask(__name__)
 
 app.config['MONGODB_SETTINGS'] = {
-    'host': 'mongodb://localhost/movie-bag'
+    'host': 'mongodb+srv://admin:admin@cluster0-hhiar.mongodb.net/test?retryWrites=true&w=majority'
 }
 
 initialize_db(app)
