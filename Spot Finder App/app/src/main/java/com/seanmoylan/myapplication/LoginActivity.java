@@ -15,28 +15,36 @@ import com.seanmoylan.myapplication.Classes.User;
 public class LoginActivity extends AppCompatActivity {
 
     // Create variables needed to extract from UI
-    EditText username = findViewById(R.id.usernameText);
-    EditText password = findViewById(R.id.passwordText);
-    Button loginButton = findViewById(R.id.loginBtn);
-    TextView registerText = findViewById(R.id.registerText);
+    EditText username;
+    EditText password;
+    Button loginButton;
+    TextView registerText;
 
-
+    // TODO : Check that the user has allowed permissions
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        username = findViewById(R.id.usernameText);
+        password = findViewById(R.id.passwordText);
+        loginButton = findViewById(R.id.loginBtn);
+        registerText = findViewById(R.id.registerText);
+
         // Any activity that is needed here
         final Intent regIntent = new Intent(this, RegisterActivity.class);
-
+        final Intent intent = new Intent(this, MapsActivity.class);
 
         // Set a click listener for the login btn
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Validate and Login user
+                //TODO: Delete later
+                startActivity(intent);
 
+
+                // TODO: Validate and Login user
                 Login u = new Login(username.getText().toString(), password.getText().toString());
                 loginUser(u);
             }

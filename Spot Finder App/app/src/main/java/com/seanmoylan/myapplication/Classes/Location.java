@@ -1,8 +1,8 @@
 package com.seanmoylan.myapplication.Classes;
 
 public class Location {
-    String latitude;
-    String longitude;
+    double latitude;
+    double longitude;
     String title;
     String description;
     Type type;
@@ -10,20 +10,34 @@ public class Location {
     public void Location(){
 
     }
+    /*  Used to create a location and populate it with
+        lat and long.
+     */
+    public void Location(double latitude, double longitude){
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 
-    public String getLatitude() {
+    public void Location(double latitude, double longitude, String title, String type ){
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.title = title;
+        this.type = Type.valueOf(type);
+    }
+
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
@@ -51,10 +65,5 @@ public class Location {
         this.type = type;
     }
 
-    public void Location(String latitude, String longitude, String title, String type ){
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.title = title;
-        this.type = Type.valueOf(type);
-    }
+
 }
