@@ -33,15 +33,15 @@ public class LoginActivity extends AppCompatActivity {
         registerText = findViewById(R.id.registerText);
 
         // Any activity that is needed here
-        final Intent regIntent = new Intent(this, RegisterActivity.class);
-        final Intent intent = new Intent(this, MapsActivity.class);
+        final Intent regIntent = new Intent(this, MapsActivity.class);
+
 
         // Set a click listener for the login btn
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //TODO: Delete later
-                startActivity(intent);
+                startActivity(regIntent);
 
 
                 // TODO: Validate and Login user

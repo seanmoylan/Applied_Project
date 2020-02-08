@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Spot Finder</string>
-    <string name="map_api_key">AIzaSyAZdUSSQx6xFB4bUnZG_i_TOrR9v-yUPas</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -12,4 +11,5 @@
     <string name="already_registered">Already Registered?</string>
     <string name="sign_in">Sign In</string>
     <string name="title_activity_maps2">Map</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
