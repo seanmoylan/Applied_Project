@@ -1,69 +1,95 @@
 package com.seanmoylan.myapplication.Classes;
 
+import java.util.HashMap;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "latitude",
+        "longitude",
+        "title",
+        "description",
+        "type"
+})
 public class Location {
-    double latitude;
-    double longitude;
-    String title;
-    String description;
-    Type type;
 
-    public void Location(){
+    @JsonProperty("latitude")
+    private Double latitude;
+    @JsonProperty("longitude")
+    private Double longitude;
+    @JsonProperty("title")
+    private String title;
+    @JsonProperty("description")
+    private String description;
+    @JsonProperty("type")
+    private Type type;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    }
-    /*  Used to create a location and populate it with
-        lat and long.
-     */
-    public void Location(double latitude, double longitude){
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
-
-    public void Location(double latitude, double longitude, String title, String type ){
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.title = title;
-        this.type = Type.valueOf(type);
-    }
-
-    public double getLatitude() {
+    @JsonProperty("latitude")
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    @JsonProperty("latitude")
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    @JsonProperty("longitude")
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    @JsonProperty("longitude")
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
+    @JsonProperty("title")
     public String getTitle() {
         return title;
     }
 
+    @JsonProperty("title")
     public void setTitle(String title) {
         this.title = title;
     }
 
+    @JsonProperty("description")
     public String getDescription() {
         return description;
     }
 
+    @JsonProperty("description")
     public void setDescription(String description) {
         this.description = description;
     }
 
+    @JsonProperty("type")
     public Type getType() {
         return type;
     }
 
+    @JsonProperty("type")
     public void setType(Type type) {
         this.type = type;
     }
 
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
 
 }

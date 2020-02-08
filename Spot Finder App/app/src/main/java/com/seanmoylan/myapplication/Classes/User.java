@@ -1,67 +1,82 @@
 package com.seanmoylan.myapplication.Classes;
 
-import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "id",
+        "name",
+        "username",
+        "email"
+})
 public class User {
-    int id;
-    String name;
-    String username;
-    String email;
-    String password;
-    Date regDate;
 
+    @JsonProperty("id")
+    private Double id;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("username")
+    private String username;
+    @JsonProperty("email")
+    private Object email;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-
-    public void User(int id, String name,String username, String password, String email, Date regDate){
-        this.id = id;
-        this.name = name;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.regDate = regDate;
-
-    }
-
-
-    public int getId() {
+    @JsonProperty("id")
+    public Double getId() {
         return id;
     }
 
-    public void setId(int id) {
+    @JsonProperty("id")
+    public void setId(Double id) {
         this.id = id;
     }
 
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
+    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
 
+    @JsonProperty("username")
     public String getUsername() {
         return username;
     }
 
+    @JsonProperty("username")
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getEmail() {
+    @JsonProperty("email")
+    public Object getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    @JsonProperty("email")
+    public void setEmail(Object email) {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
-
 
 }

@@ -1,0 +1,20 @@
+{
+  "type":"object",
+  "properties": {
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "type": {
+      "type": "object"
+    }
+  }
+}
