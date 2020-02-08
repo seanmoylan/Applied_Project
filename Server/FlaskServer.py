@@ -19,7 +19,6 @@ app = fl.Flask(__name__)
 # Root directory
 @app.route("/")
 def index():
-  
     return "Server running..."
 
 # GET all users
