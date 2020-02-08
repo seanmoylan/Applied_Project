@@ -19,21 +19,28 @@ app = fl.Flask(__name__)
 # Root directory
 @app.route("/")
 def index():
-    """
-    this is a root dir of my server
-    :return: str
-    """
-    return "This is root!!!!"
+  
+    return "Server running..."
 
-# GET 
+# GET all users
+@app.route('/users')
+def get_users():
+    return "All users"
+
+# GET specific user 
 @app.route('/users/<user>')
-def hello_user(user):
-    """
-    this serves as a demo purpose
-    :param user:
-    :return: str
-    """
+def get_user(user):
     return "Hello %s!" % user
+
+# GET all locations
+@app.route('/locations')
+def get_locations():
+    return "All locations"
+
+# GET location
+@app.route('/locations/<locationId>')
+def get_location(locationId):
+    return "Specific location %s" %locationId
 
 # POST 
 @app.route('/api/post_some_data', methods=['POST'])
