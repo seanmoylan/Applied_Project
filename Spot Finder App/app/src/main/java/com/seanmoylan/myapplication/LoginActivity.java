@@ -45,8 +45,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 // TODO: Validate and Login user
-                Login u = new Login(username.getText().toString(), password.getText().toString());
-                loginUser(u);
+                // Login u = new Login(username.getText().toString(), password.getText().toString());
+                // loginUser(u);
             }
         });
 

@@ -43,7 +43,7 @@ def get_location(locationId):
 
 # POST 
 @app.route('/api/post_some_data', methods=['POST'])
-def get_text_prediction():
+def get_text_prediction(request):
     """
     predicts requested text whether it is ham or spam
     :return: json
