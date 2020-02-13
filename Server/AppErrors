@@ -1,0 +1,64 @@
+2020-02-13 19:51:34.811 16650-16650/? I/ylan.spotfinde: Late-enabling -Xcheck:jni
+2020-02-13 19:51:34.941 16650-16670/com.seanmoylan.spotfinder I/ylan.spotfinde: The ClassLoaderContext is a special shared library.
+2020-02-13 19:51:34.959 16650-16650/com.seanmoylan.spotfinder I/ylan.spotfinde: The ClassLoaderContext is a special shared library.
+2020-02-13 19:51:35.246 16650-16650/com.seanmoylan.spotfinder I/Perf: Connecting to perf service.
+2020-02-13 19:51:35.311 16650-16650/com.seanmoylan.spotfinder W/ylan.spotfinde: Accessing hidden method Landroid/graphics/drawable/Drawable;->getOpticalInsets()Landroid/graphics/Insets; (light greylist, linking)
+2020-02-13 19:51:35.311 16650-16650/com.seanmoylan.spotfinder W/ylan.spotfinde: Accessing hidden field Landroid/graphics/Insets;->left:I (light greylist, linking)
+2020-02-13 19:51:35.311 16650-16650/com.seanmoylan.spotfinder W/ylan.spotfinde: Accessing hidden field Landroid/graphics/Insets;->right:I (light greylist, linking)
+2020-02-13 19:51:35.311 16650-16650/com.seanmoylan.spotfinder W/ylan.spotfinde: Accessing hidden field Landroid/graphics/Insets;->top:I (light greylist, linking)
+2020-02-13 19:51:35.311 16650-16650/com.seanmoylan.spotfinder W/ylan.spotfinde: Accessing hidden field Landroid/graphics/Insets;->bottom:I (light greylist, linking)
+2020-02-13 19:51:35.349 16650-16650/com.seanmoylan.spotfinder W/ylan.spotfinde: Accessing hidden method Landroid/view/View;->computeFitSystemWindows(Landroid/graphics/Rect;Landroid/graphics/Rect;)Z (light greylist, reflection)
+2020-02-13 19:51:35.350 16650-16650/com.seanmoylan.spotfinder W/ylan.spotfinde: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (light greylist, reflection)
+2020-02-13 19:51:35.380 16650-16650/com.seanmoylan.spotfinder W/ylan.spotfinde: Accessing hidden method Landroid/widget/TextView;->getTextDirectionHeuristic()Landroid/text/TextDirectionHeuristic; (light greylist, linking)
+2020-02-13 19:51:35.412 16650-16650/com.seanmoylan.spotfinder D/OpenGLRenderer: Skia GL Pipeline
+2020-02-13 19:51:35.464 16650-16677/com.seanmoylan.spotfinder D/DecorView: onWindowFocusChangedFromViewRoot hasFocus: true, DecorView@fa2d86c[LoginActivity]
+2020-02-13 19:51:35.466 16650-16699/com.seanmoylan.spotfinder I/Adreno: QUALCOMM build                   : 4c638fb, I557c585805
+    Build Date                       : 10/06/18
+    OpenGL ES Shader Compiler Version: EV031.25.03.01
+    Local Branch                     : 
+    Remote Branch                    : 
+    Remote Branch                    : 
+    Reconstruct Branch               : 
+2020-02-13 19:51:35.466 16650-16699/com.seanmoylan.spotfinder I/Adreno: Build Config                     : S L 6.0.7 AArch64
+2020-02-13 19:51:35.469 16650-16699/com.seanmoylan.spotfinder I/Adreno: PFP: 0x005ff112, ME: 0x005ff066
+2020-02-13 19:51:35.472 16650-16699/com.seanmoylan.spotfinder I/ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasWideColorDisplay retrieved: 0
+2020-02-13 19:51:35.472 16650-16699/com.seanmoylan.spotfinder I/ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasHDRDisplay retrieved: 0
+2020-02-13 19:51:35.473 16650-16699/com.seanmoylan.spotfinder I/OpenGLRenderer: Initialized EGL, version 1.4
+2020-02-13 19:51:35.473 16650-16699/com.seanmoylan.spotfinder D/OpenGLRenderer: Swap behavior 2
+2020-02-13 19:51:37.477 16650-16650/com.seanmoylan.spotfinder D/NetworkSecurityConfig: No Network Security Config specified, using platform default
+2020-02-13 19:51:37.480 16650-16650/com.seanmoylan.spotfinder W/ylan.spotfinde: Accessing hidden method Ldalvik/system/CloseGuard;->get()Ldalvik/system/CloseGuard; (light greylist, reflection)
+2020-02-13 19:51:37.480 16650-16650/com.seanmoylan.spotfinder W/ylan.spotfinde: Accessing hidden method Ldalvik/system/CloseGuard;->open(Ljava/lang/String;)V (light greylist, reflection)
+2020-02-13 19:51:37.480 16650-16650/com.seanmoylan.spotfinder W/ylan.spotfinde: Accessing hidden method Ldalvik/system/CloseGuard;->warnIfOpen()V (light greylist, reflection)
+2020-02-13 19:51:37.498 16650-16650/com.seanmoylan.spotfinder I/System.out: Request{method=GET, url=https://localhost:5000/users, tag=null}
+2020-02-13 19:51:37.523 16650-16650/com.seanmoylan.spotfinder I/System.out: it failed
+2020-02-13 19:51:37.523 16650-16650/com.seanmoylan.spotfinder I/System.out: Failed to connect to localhost/127.0.0.1:5000
+2020-02-13 19:51:48.798 16650-16650/com.seanmoylan.spotfinder I/System.out: Request{method=GET, url=https://localhost:5000/users, tag=null}
+2020-02-13 19:51:48.817 16650-16650/com.seanmoylan.spotfinder I/System.out: it failed
+2020-02-13 19:51:48.818 16650-16650/com.seanmoylan.spotfinder I/System.out: Failed to connect to localhost/127.0.0.1:5000
+2020-02-13 19:51:49.871 16650-16650/com.seanmoylan.spotfinder I/System.out: Request{method=GET, url=https://localhost:5000/users, tag=null}
+2020-02-13 19:51:49.887 16650-16650/com.seanmoylan.spotfinder I/System.out: it failed
+2020-02-13 19:51:49.887 16650-16650/com.seanmoylan.spotfinder I/System.out: Failed to connect to localhost/127.0.0.1:5000
+2020-02-13 19:52:18.675 16650-16650/com.seanmoylan.spotfinder I/AssistStructure: Flattened final assist data: 2676 bytes, containing 1 windows, 8 views
+2020-02-13 19:52:19.760 16650-16650/com.seanmoylan.spotfinder I/System.out: Request{method=GET, url=https://localhost:5000/users, tag=null}
+2020-02-13 19:52:19.778 16650-16650/com.seanmoylan.spotfinder I/System.out: it failed
+2020-02-13 19:52:19.778 16650-16650/com.seanmoylan.spotfinder I/System.out: Failed to connect to localhost/127.0.0.1:5000
+2020-02-13 19:52:36.164 16650-16650/com.seanmoylan.spotfinder I/System.out: Request{method=GET, url=https://localhost:5000/users, tag=null}
+2020-02-13 19:52:36.183 16650-16650/com.seanmoylan.spotfinder I/System.out: it failed
+2020-02-13 19:52:36.183 16650-16650/com.seanmoylan.spotfinder I/System.out: Failed to connect to localhost/127.0.0.1:5000
+2020-02-13 19:52:45.939 16650-16650/com.seanmoylan.spotfinder I/System.out: Request{method=GET, url=https://localhost:5000/users, tag=null}
+2020-02-13 19:52:45.948 16650-16650/com.seanmoylan.spotfinder I/System.out: it failed
+2020-02-13 19:52:45.948 16650-16650/com.seanmoylan.spotfinder I/System.out: Failed to connect to localhost/127.0.0.1:5000
+2020-02-13 19:52:52.595 16650-16650/com.seanmoylan.spotfinder I/System.out: Request{method=GET, url=https://localhost:5000/users, tag=null}
+2020-02-13 19:52:52.616 16650-16650/com.seanmoylan.spotfinder I/System.out: it failed
+2020-02-13 19:52:52.616 16650-16650/com.seanmoylan.spotfinder I/System.out: Failed to connect to localhost/127.0.0.1:5000
+2020-02-13 19:53:02.870 16650-16650/com.seanmoylan.spotfinder I/System.out: Request{method=GET, url=https://localhost:5000/users, tag=null}
+2020-02-13 19:53:02.888 16650-16650/com.seanmoylan.spotfinder I/System.out: it failed
+2020-02-13 19:53:02.888 16650-16650/com.seanmoylan.spotfinder I/System.out: Failed to connect to localhost/127.0.0.1:5000
+2020-02-13 19:53:38.430 16650-16650/com.seanmoylan.spotfinder I/System.out: Request{method=GET, url=https://localhost:5000/users, tag=null}
+2020-02-13 19:53:38.449 16650-16650/com.seanmoylan.spotfinder I/System.out: it failed
+2020-02-13 19:53:38.449 16650-16650/com.seanmoylan.spotfinder I/System.out: Failed to connect to localhost/127.0.0.1:5000
+2020-02-13 19:54:13.252 16650-16677/com.seanmoylan.spotfinder D/DecorView: onWindowFocusChangedFromViewRoot hasFocus: true, DecorView@fa2d86c[LoginActivity]
+2020-02-13 19:54:14.720 16650-16650/com.seanmoylan.spotfinder I/System.out: Request{method=GET, url=https://localhost:5000/users, tag=null}
+2020-02-13 19:54:14.752 16650-17973/com.seanmoylan.spotfinder W/ylan.spotfinde: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (light greylist, reflection)
+2020-02-13 19:54:14.762 16650-16650/com.seanmoylan.spotfinder I/System.out: it failed
+2020-02-13 19:54:14.762 16650-16650/com.seanmoylan.spotfinder I/System.out: Handshake failed

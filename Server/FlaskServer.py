@@ -5,7 +5,9 @@ Adapted partly from: https://android.jlelse.eu/handmade-backend-for-android-app-
 """
 
 # Imports
+import json
 import flask as fl
+from flask import request, jsonify, make_response
 from pymongo import MongoClient
 
 
@@ -16,6 +18,8 @@ client = MongoClient()
 # Flask instance
 app = fl.Flask(__name__)
 
+
+
 # Root directory
 @app.route("/")
 def index():
@@ -24,7 +28,9 @@ def index():
 # GET all users
 @app.route('/users')
 def get_users():
-    return "All users"
+    with open("users/user.json") as f:
+        data = json.loads(f.read())
+    return make_response(data)
 
 # GET specific user 
 @app.route('/users/<user>')
@@ -41,18 +47,5 @@ def get_locations():
 def get_location(locationId):
     return "Specific location %s" %locationId
 
-# POST 
-@app.route('/api/post_some_data', methods=['POST'])
-def get_text_prediction(request):
-    """
-    predicts requested text whether it is ham or spam
-    :return: json
-    """
-    json = request.get_json()
-    print(json)
-    if len(json['text']) == 0:
-        return jsonify({'error': 'invalid input'})
 
-    return jsonify({'you sent this': json['text']})
-    
 #app.run(debug=True)
