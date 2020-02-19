@@ -11,7 +11,7 @@
       "type": "string"
     },
     "email": {
-      "type": "password"
+      "type": "string"
     }
   }
 }

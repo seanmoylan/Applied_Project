@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
+        "username",
         "latitude",
         "longitude",
         "title",
@@ -19,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 public class Location {
 
+    @JsonProperty("username")
+    private String username;
     @JsonProperty("latitude")
     private Double latitude;
     @JsonProperty("longitude")
@@ -31,6 +34,16 @@ public class Location {
     private Type type;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    @JsonProperty("username")
+    public String getUsername() {
+        return username;
+    }
+
+    @JsonProperty("username")
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     @JsonProperty("latitude")
     public Double getLatitude() {
