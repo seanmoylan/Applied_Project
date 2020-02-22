@@ -28,19 +28,30 @@ def index():
 # GET all users
 @app.route('/users')
 def get_users():
-    with open("users/user.json") as f:
+    with open("jsonfiles/user.json") as f:
         data = json.loads(f.read())
     return make_response(data)
 
-# GET specific user 
+# POST specific user 
 @app.route('/users/<user>')
-def get_user(user):
-    return "Hello %s!" % user
+def create_user(user):
+    return "Hello {user}"
 
 # GET all locations
 @app.route('/locations')
 def get_locations():
-    return "All locations"
+    with open("jsonfiles/location.json") as f:
+        data = json.loads(f.read())
+    return make_response(data)
+
+# GET all locations
+@app.route('/login')
+def login():
+    with open("jsonfiles/login.json") as f:
+        data = json.loads(f.read())
+    return make_response(data)
+
+
 
 # GET location
 @app.route('/locations/<locationId>')

@@ -10,7 +10,7 @@ public class User {
     private String email;
     private String password;
 
-    @SerializedName("id")
+
     public Double getId() {
         return id;
     }

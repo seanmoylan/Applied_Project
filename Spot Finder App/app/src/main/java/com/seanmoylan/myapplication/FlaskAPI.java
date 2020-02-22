@@ -1,5 +1,6 @@
 package com.seanmoylan.myapplication;
 
+import com.seanmoylan.myapplication.Classes.Location;
 import com.seanmoylan.myapplication.Classes.Login;
 import com.seanmoylan.myapplication.Classes.User;
 
@@ -15,6 +16,9 @@ public interface FlaskAPI {
 
     @GET("/users")
     Call<User> getUser();
+
+    @GET("/locations")
+    Call<Location> getLocations();
 
 
     @POST("/users/<user>")

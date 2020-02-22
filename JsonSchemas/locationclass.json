@@ -14,7 +14,10 @@
       "type": "string"
     },
     "type": {
-      "type": "object"
+      "type": "number"
+    },
+    "user_id": {
+      "type": "number"
     }
   }
 }
