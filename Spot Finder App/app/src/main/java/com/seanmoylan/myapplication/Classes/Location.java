@@ -2,8 +2,6 @@ package com.seanmoylan.myapplication.Classes;
 
 import java.util.HashMap;
 import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,9 +29,7 @@ public class Location {
     @JsonProperty("description")
     private String description;
     @JsonProperty("type")
-    private Type type;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private int type;
 
     @JsonProperty("username")
     public String getUsername() {
@@ -86,23 +82,24 @@ public class Location {
     }
 
     @JsonProperty("type")
-    public Type getType() {
+    public int getType() {
         return type;
     }
 
     @JsonProperty("type")
-    public void setType(Type type) {
+    public void setType(int type) {
         this.type = type;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    @Override
+    public String toString() {
+        return "Location{" +
+                "username='" + username + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", type=" + type +
+                '}';
     }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

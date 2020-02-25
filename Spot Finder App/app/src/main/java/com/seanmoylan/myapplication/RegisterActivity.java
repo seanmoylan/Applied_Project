@@ -26,6 +26,8 @@ public class RegisterActivity extends AppCompatActivity {
         confPassword = findViewById(R.id.regConfirmPasswordText);
         loginText = findViewById(R.id.regSignIn);
 
+        //TODO Need to POST to the API and add a new user to the database
+
         // Any activity that is needed here
         final Intent loginIntent = new Intent(this, LoginActivity.class);
 

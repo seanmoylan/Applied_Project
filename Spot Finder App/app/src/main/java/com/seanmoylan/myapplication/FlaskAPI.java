@@ -4,6 +4,8 @@ import com.seanmoylan.myapplication.Classes.Location;
 import com.seanmoylan.myapplication.Classes.Login;
 import com.seanmoylan.myapplication.Classes.User;
 
+import java.util.List;
+
 import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -18,7 +20,7 @@ public interface FlaskAPI {
     Call<User> getUser();
 
     @GET("/locations")
-    Call<Location> getLocations();
+    Call<List<Location>> getLocations();
 
 
     @POST("/users/<user>")
