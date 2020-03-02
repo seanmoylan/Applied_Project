@@ -23,26 +23,44 @@ db.init_app(app)
 # Root directory
 @app.route("/")
 def index():
-    
-    User(username="cheezy23", email="seanmoylan1@icloud.com", password="1234").save()
+    # Save a user
+    # User(username="cheezy23", email="seanmoylan1@icloud.com", password="1234").save()
 
     return "Server running..."
 
 # GET all users
 @app.route('/users')
 def get_users():
-    user = User.objects.get(username="cheezy23")
+    user = User.objects()
 
     with open("jsonfiles/user.json") as f:
         data = json.loads(f.read())
     return jsonify(user)
 
-# POST specific user 
+# Get user 
 @app.route('/users/<user>')
-def create_user(user):
-    username = user
-    user = User.objects.get(username=username)
-    return jsonify(user)
+def get_user(user):
+    
+    
+    user1 = User.objects.get(username=user)
+    return jsonify(user1)
+
+# Create User 
+@app.route('/users/create', methods=['POST'])
+def create_user():
+
+    # Get the json data from the post request
+    user_json = request.get_json()
+
+    # Try saving to the database, if there is an error 
+    try:
+        newuser = User(username = user_json['username'], email = user_json['email'], password = user_json['password']).save()
+        return jsonify(newuser)
+    except:
+        return "Error creating "
+
+    
+    
 
 # GET all locations
 @app.route('/locations')
