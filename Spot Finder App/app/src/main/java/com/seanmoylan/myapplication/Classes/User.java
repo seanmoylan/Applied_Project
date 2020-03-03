@@ -1,30 +1,22 @@
 package com.seanmoylan.myapplication.Classes;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
 
-    private Double id;
-    private String name;
+    @JsonProperty("_id")
+    private String id;
     private String username;
     private String email;
     private String password;
 
 
-    public Double getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getUsername() {
@@ -51,14 +43,5 @@ public class User {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
+
 }

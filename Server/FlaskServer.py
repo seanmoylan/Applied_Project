@@ -25,7 +25,7 @@ db.init_app(app)
 def index():
     # Save a user
     # User(username="cheezy23", email="seanmoylan1@icloud.com", password="1234").save()
-
+    Location(latitude="1.2523523", longitude="2.252334", description="somthing", title="Stairs", spot_type="2").save()
     return "Server running..."
 
 # GET all users
@@ -33,17 +33,15 @@ def index():
 def get_users():
     user = User.objects()
 
-    with open("jsonfiles/user.json") as f:
-        data = json.loads(f.read())
     return jsonify(user)
+
 
 # Get user 
 @app.route('/users/<user>')
 def get_user(user):
-    
-    
     user1 = User.objects.get(username=user)
     return jsonify(user1)
+
 
 # Create User 
 @app.route('/users/create', methods=['POST'])
@@ -53,11 +51,34 @@ def create_user():
     user_json = request.get_json()
 
     # Try saving to the database, if there is an error 
+
+    newuser = User(username = user_json['username'], email = user_json['email'], password = user_json['password']).save()
+    return jsonify(newuser)
+
+
+# Login User 
+@app.route('/users/login', methods=['POST'])
+def login_user():
+
+    # Get the json data from the post request
+    user_json = request.get_json()
+    print(user_json['username'])
+
     try:
-        newuser = User(username = user_json['username'], email = user_json['email'], password = user_json['password']).save()
-        return jsonify(newuser)
+        user_credentials = User.objects.get(username=user_json['username'])
     except:
-        return "Error creating "
+        return "Did not match"
+    
+
+    # Check that the user password matched the stored password
+    if(user_credentials.password == user_json["password"] ):
+        # user can login
+        return jsonify(user_credentials)
+    else:
+        return ("Incorrect username or password")
+    
+    
+    
 
     
     
@@ -65,17 +86,9 @@ def create_user():
 # GET all locations
 @app.route('/locations')
 def get_locations():
-    with open("jsonfiles/location.json") as f:
-        data = json.loads(f.read())
-    return make_response(data)
 
-# GET all locations
-@app.route('/login')
-def login():
-    with open("jsonfiles/login.json") as f:
-        data = json.loads(f.read())
-    return make_response(data)
-
+    locations = Location.objects.get()
+    return jsonify(locations)
 
 
 # GET location
@@ -87,13 +100,10 @@ def get_location(locationId):
 
 
 
-# DATABASE
-
-
-
+# DATABASE Documents
 
 class Location(db.Document):
-    latitude = db.FloatField(required=True)
+    latitude = db.FloatField(unique=True, required=True)
     longitude = db.FloatField(required=True)
     title = db.StringField(required=True)
     description = db.StringField()
@@ -102,5 +112,5 @@ class Location(db.Document):
 
 class User(db.Document):
     username = db.StringField(unique=True, required=True)
-    email = db.EmailField(unique=True, required=True)
+    email = db.EmailField(required=True)
     password = db.StringField(required=True)

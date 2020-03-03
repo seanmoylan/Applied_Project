@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.seanmoylan.myapplication.Classes.Login;
 import com.seanmoylan.myapplication.Classes.Tools;
@@ -52,13 +53,9 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginBtn);
         registerTxt = findViewById(R.id.registerText);
 
-        // Get string from text views
-        final String username = usernameTxt.getText().toString();
-        final String password = passwordTxt.getText().toString();
-
 
         // Any activity that is needed here
-        final Intent regIntent = new Intent(this, MapsActivity.class);
+        final Intent regIntent = new Intent(this, RegisterActivity.class);
 
 
 
@@ -70,8 +67,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 Login user = new Login();
-                user.setUsername(username);
-                user.setPassword(password);
+                user.setUsername(usernameTxt.getText().toString());
+                user.setPassword(passwordTxt.getText().toString());
 
                 loginUser(user);
 
@@ -101,29 +98,30 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         FlaskAPI flaskApi = retrofit.create(FlaskAPI.class);
-        Call<User> call = flaskApi.getUser();
-        Call<User> call2 = flaskApi.createUser();
+        Call<Login> call = flaskApi.userLogin(u);
+
 
         System.out.println(call.request());
 
 
-        call.enqueue(new Callback<User>() {
+        call.enqueue(new Callback<Login>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<Login> call, Response<Login> response) {
                 System.out.println("Code: "+response.code());
                 if(!response.isSuccessful()){
                     System.out.println("Code: " + response.code());
                     return;
                 }
 
-                User u = response.body();
+                Login u = response.body();
                 System.out.println(u.toString());
-                usernameTxt.setText(u.getUsername());
+                usernameTxt.setText("Login Successful");
                 passwordTxt.setText(u.getPassword());
+
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<Login> call, Throwable t) {
                 System.out.println("Request failed");
                 System.out.println(t.getMessage());
             }

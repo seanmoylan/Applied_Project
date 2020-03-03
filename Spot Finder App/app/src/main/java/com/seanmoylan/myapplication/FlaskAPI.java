@@ -8,6 +8,7 @@ import java.util.List;
 
 import io.reactivex.Single;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -19,12 +20,15 @@ public interface FlaskAPI {
     @GET("/users")
     Call<User> getUser();
 
+    @POST("/users/login")
+    Call<Login> userLogin(@Body Login user);
+
     @GET("/locations")
     Call<List<Location>> getLocations();
 
 
-    @POST("/users/<user>")
-    Call<User> createUser();
+    @POST("/users/create")
+    Call<User> createUser(@Body User user);
 
 
 

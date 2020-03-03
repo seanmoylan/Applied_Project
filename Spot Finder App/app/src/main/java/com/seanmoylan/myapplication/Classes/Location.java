@@ -28,8 +28,8 @@ public class Location {
     private String title;
     @JsonProperty("description")
     private String description;
-    @JsonProperty("type")
-    private int type;
+    @JsonProperty("spot_type")
+    private int spot_type;
 
     @JsonProperty("username")
     public String getUsername() {
@@ -81,14 +81,14 @@ public class Location {
         this.description = description;
     }
 
-    @JsonProperty("type")
+    @JsonProperty("spot_type")
     public int getType() {
-        return type;
+        return spot_type;
     }
 
     @JsonProperty("type")
     public void setType(int type) {
-        this.type = type;
+        this.spot_type = type;
     }
 
     @Override
@@ -99,7 +99,7 @@ public class Location {
                 ", longitude=" + longitude +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", type=" + type +
+                ", type=" + spot_type +
                 '}';
     }
 }
