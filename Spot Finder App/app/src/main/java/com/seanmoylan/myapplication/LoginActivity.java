@@ -21,6 +21,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.seanmoylan.myapplication.Classes.Login;
 import com.seanmoylan.myapplication.Classes.Tools;
 import com.seanmoylan.myapplication.Classes.User;
@@ -33,12 +35,12 @@ public class LoginActivity extends AppCompatActivity {
     Button loginButton;
     TextView registerTxt;
 
+
+    Boolean loggedIn = false;
+
     // Retrofit used with api
     Retrofit retrofit;
 
-    // Create an instance of the FlaskAPI interface
-    CompositeDisposable dump;
-    Login response;
 
 
     // TODO : Check that the user has allowed permissions
@@ -53,9 +55,13 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginBtn);
         registerTxt = findViewById(R.id.registerText);
 
-
         // Any activity that is needed here
-        final Intent regIntent = new Intent(this, RegisterActivity.class);
+        Intent regIntent = new Intent(this, RegisterActivity.class);
+        Intent profileIntent = new Intent(this, ProfileActivity.class);
+
+
+
+
 
 
 
@@ -70,8 +76,8 @@ public class LoginActivity extends AppCompatActivity {
                 user.setUsername(usernameTxt.getText().toString());
                 user.setPassword(passwordTxt.getText().toString());
 
-                loginUser(user);
 
+                loginUser(user);
                 // TODO: Validate and Login user
                 // Login u = new Login(username.getText().toString(), password.getText().toString());
                 // loginUser(u);
@@ -83,18 +89,23 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Create an intent to go to the register page
-                startActivity(regIntent);
+                startActivity(new Intent());
             }
         });
     }
 
-    private void loginUser(Login u) {
-        // Send request to the server to compare credentials
+    private boolean loginUser(Login u) {
 
-        // Retrofit
+
+        // Send request to the server to compare credentials
+        // Retrofit and Gson
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
         retrofit = new Retrofit.Builder()
                 .baseUrl("http://localhost:5000/")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         FlaskAPI flaskApi = retrofit.create(FlaskAPI.class);
@@ -110,24 +121,37 @@ public class LoginActivity extends AppCompatActivity {
                 System.out.println("Code: "+response.code());
                 if(!response.isSuccessful()){
                     System.out.println("Code: " + response.code());
+                    loggedIn = true;
                     return;
                 }
+
 
                 Login u = response.body();
                 System.out.println(u.toString());
                 usernameTxt.setText("Login Successful");
                 passwordTxt.setText(u.getPassword());
+                Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_LONG).show();
+
+                // If login is successfull then create an intent for the
+                // profile activity and pass it the username that logged in
+                Intent loadUserProfile = new Intent(getApplicationContext(), ProfileActivity.class);
+                loadUserProfile.putExtra("username", u.getUsername());
+                loadUserProfile.putExtra("password", u.getPassword());
+                startActivity(loadUserProfile);
 
             }
 
             @Override
             public void onFailure(Call<Login> call, Throwable t) {
                 System.out.println("Request failed");
-                System.out.println(t.getMessage());
+                System.out.println();
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
 
+
+        return loggedIn;
     }
 
 }

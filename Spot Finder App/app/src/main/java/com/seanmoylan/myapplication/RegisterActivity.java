@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.seanmoylan.myapplication.Classes.Login;
 import com.seanmoylan.myapplication.Classes.User;
@@ -27,6 +28,8 @@ public class RegisterActivity extends AppCompatActivity {
     Button registerBtn;
 
     Retrofit retrofit;
+
+    Toast userNotification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Boolean createUser(User user){
 
 
+
         // Retrofit
         retrofit = new Retrofit.Builder()
                 .baseUrl("http://localhost:5000/")
@@ -105,6 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
                     User newUser = response.body();
 
                 }
+
             }
 
             @Override

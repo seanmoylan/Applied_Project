@@ -50,4 +50,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker near sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sy));
     }
+
+    private void loadLocations(){
+
+    }
 }

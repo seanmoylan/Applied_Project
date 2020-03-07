@@ -67,6 +67,7 @@ def login_user():
     try:
         user_credentials = User.objects.get(username=user_json['username'])
     except:
+        print("No such user")
         return "Did not match"
     
 
