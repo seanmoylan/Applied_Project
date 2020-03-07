@@ -88,7 +88,7 @@ def login_user():
 @app.route('/locations')
 def get_locations():
 
-    locations = Location.objects.get()
+    locations = Location.objects.filter()
     return jsonify(locations)
 
 
