@@ -34,7 +34,7 @@ public class ViewLocations extends AppCompatActivity {
         if(locations != null){
 
             locals = (Location[]) locations.toArray();
-            System.out.println(locals[0]);
+            System.out.println("This is the first location in the array" + locals[0]);
             recyclerView = findViewById(R.id.recyclerView);
             LocationsViewAdapter myAdapter = new LocationsViewAdapter(this, locals);
             recyclerView.setAdapter(myAdapter);

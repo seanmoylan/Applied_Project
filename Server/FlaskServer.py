@@ -25,7 +25,7 @@ db.init_app(app)
 def index():
     # Save a user
     # User(username="cheezy23", email="seanmoylan1@icloud.com", password="1234").save()
-    Location(latitude="1.2523523", longitude="2.252334", description="somthing", title="Stairs", spot_type="2").save()
+    #Location(latitude="1.2523523", longitude="2.252334", description="somthing", title="Stairs", spot_type="2").save()
     return "Server running..."
 
 # GET all users
@@ -104,7 +104,7 @@ def get_location(locationId):
 # DATABASE Documents
 
 class Location(db.Document):
-    latitude = db.FloatField(unique=True, required=True)
+    latitude = db.FloatField(required=True)
     longitude = db.FloatField(required=True)
     title = db.StringField(required=True)
     description = db.StringField()

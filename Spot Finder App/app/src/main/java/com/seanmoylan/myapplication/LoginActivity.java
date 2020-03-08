@@ -127,9 +127,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 Login u = response.body();
-                System.out.println(u.toString());
-                usernameTxt.setText("Login Successful");
-                passwordTxt.setText(u.getPassword());
                 Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_LONG).show();
 
                 // If login is successfull then create an intent for the

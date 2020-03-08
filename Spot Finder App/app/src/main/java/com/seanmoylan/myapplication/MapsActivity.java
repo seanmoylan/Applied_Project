@@ -1,5 +1,8 @@
 package com.seanmoylan.myapplication;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -8,9 +11,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -20,14 +27,27 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.seanmoylan.myapplication.Classes.Location;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.seanmoylan.myapplication.Classes.Login;
 
+import java.sql.Array;
 import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Retrofit retrofit;
+
+    LatLng myHouse;
+    Location newLocation;
+
+    // Android Location class
+    android.location.Location myLocation;
+    FusedLocationProviderClient mFusedLocationProviderClient;
+    Boolean mLocationPermissionGranted;
+
 
     private List<Location> locations;
 
@@ -41,11 +61,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
+        // Check that the user has given permission to access location services
+        checkLocationPermitions();
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                loadLocations();
+            }
+        };
+
+        Thread thread = new Thread(runnable);
+        thread.start();
+
+        //System.out.println(locations.toString());
         // List of locations
-        loadLocations();
 
 
+
+
+
+    }
+
+    private void checkLocationPermitions() {
+        // Check user permissions are all granted
     }
 
 
@@ -71,10 +112,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker near sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sy));
+
+
     }
 
     private void loadLocations() {
 
+        List<Location> list;
         // Send request to the server to compare credentials
         // Retrofit and Gson
         Gson gson = new GsonBuilder()
@@ -96,10 +140,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onResponse(Call<List<Location>> call, Response<List<Location>> response) {
                 if(response.isSuccessful()){
-
+                    //locations = response.body();
+                    saveLocations(response.body());
                 }
-                locations = response.body();
-                System.out.println(response.body());
+
 
             }
 
@@ -109,5 +153,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 System.out.println(t.getMessage());
             }
         });
+
+        //System.out.println(locations.get(2));
+    }
+
+    private boolean saveLocations(List<Location> body) {
+        if(body != null){
+            locations = body;
+            displayLocations();
+            return true;
+        }
+        return false;
+    }
+
+    private void displayLocations() {
+        for(Location loc : locations){
+            LatLng pos = new LatLng(loc.getLatitude(), loc.getLongitude());
+            mMap.addMarker(new MarkerOptions().position(pos).title(loc.getTitle()));
+        }
     }
 }
