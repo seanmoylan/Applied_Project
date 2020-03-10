@@ -1,6 +1,9 @@
 package com.seanmoylan.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.CompositeDisposable;
@@ -13,7 +16,9 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -60,7 +65,29 @@ public class LoginActivity extends AppCompatActivity {
         Intent profileIntent = new Intent(this, ProfileActivity.class);
 
 
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission_group.LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission_group.LOCATION},
+                    1);
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission_group.LOCATION)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed; request the permission
 
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }else {
+            // Permission was already granted.
+            System.out.println("Permissions already granted");
+        }
 
 
 
@@ -89,10 +116,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Create an intent to go to the register page
-                startActivity(new Intent());
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
             }
         });
     }
+
+
 
     private boolean loginUser(Login u) {
 
@@ -149,6 +178,11 @@ public class LoginActivity extends AppCompatActivity {
 
 
         return loggedIn;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
 }

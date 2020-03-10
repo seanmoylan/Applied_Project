@@ -13,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -149,7 +150,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             @Override
             public void onFailure(Call<List<Location>> call, Throwable t) {
-                System.out.println("Request Failed");
+                Toast.makeText(getApplicationContext(), "Unable to load Locations!", Toast.LENGTH_LONG);
                 System.out.println(t.getMessage());
             }
         });
@@ -160,6 +161,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private boolean saveLocations(List<Location> body) {
         if(body != null){
             locations = body;
+
             displayLocations();
             return true;
         }
@@ -167,9 +169,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void displayLocations() {
+
         for(Location loc : locations){
+            Log.i("saveLocations", "Displaying locals");
+            System.out.println(loc.toString());
             LatLng pos = new LatLng(loc.getLatitude(), loc.getLongitude());
             mMap.addMarker(new MarkerOptions().position(pos).title(loc.getTitle()));
+            if(loc.getTitle().contains("NUIG")){
+                CameraUpdate location = CameraUpdateFactory.newLatLngZoom(pos, 10);
+                mMap.animateCamera(location);
+            }
         }
+
+
+
     }
 }
