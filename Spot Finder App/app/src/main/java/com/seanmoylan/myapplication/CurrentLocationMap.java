@@ -3,6 +3,11 @@ package com.seanmoylan.myapplication;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.Manifest;
 import android.app.Activity;
@@ -10,8 +15,12 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -26,12 +35,23 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.seanmoylan.myapplication.Classes.Login;
 
 public class CurrentLocationMap extends FragmentActivity implements OnMapReadyCallback {
 
+    // UI elements
     private GoogleMap mMap;
+    private Button saveBtn;
+    private ImageButton gpsBtn;
+
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LatLng currentLocation;
+
+    //
+
+    Retrofit retrofit;
 
     private static final int FINE_LOCATION_REQUEST_CODE = 1;
 
@@ -44,6 +64,10 @@ public class CurrentLocationMap extends FragmentActivity implements OnMapReadyCa
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        saveBtn = findViewById(R.id.saveBtn);
+        gpsBtn = findViewById(R.id.gpsBtn);
+
+
         // Check permission granted
         checkPermission(Manifest.permission.ACCESS_FINE_LOCATION, FINE_LOCATION_REQUEST_CODE);
 
@@ -55,6 +79,44 @@ public class CurrentLocationMap extends FragmentActivity implements OnMapReadyCa
 
 
 
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO Create an activity for the user to fill in details about the location they want to save
+            }
+        });
+
+
+
+    }
+
+    private void saveLocation(com.seanmoylan.myapplication.Classes.Location location) {
+        // Returns true if Location was saved successfully
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl("http://localhost:5000/")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        FlaskAPI flaskApi = retrofit.create(FlaskAPI.class);
+        Call<com.seanmoylan.myapplication.Classes.Location> call = flaskApi.createLocation(location);
+
+        call.enqueue(new Callback<com.seanmoylan.myapplication.Classes.Location>() {
+            @Override
+            public void onResponse(Call<com.seanmoylan.myapplication.Classes.Location> call, Response<com.seanmoylan.myapplication.Classes.Location> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(getApplicationContext(), "Sucessfully saved Location", Toast.LENGTH_LONG);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<com.seanmoylan.myapplication.Classes.Location> call, Throwable t) {
+
+            }
+        });
 
 
     }
@@ -94,13 +156,6 @@ public class CurrentLocationMap extends FragmentActivity implements OnMapReadyCa
         marker.draggable(true);
         marker.position(currentLocation);
         mMap.addMarker(marker);
-
-
-
-
-
-
-
 
     }
 

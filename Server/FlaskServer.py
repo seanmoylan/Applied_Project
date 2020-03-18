@@ -25,7 +25,7 @@ db.init_app(app)
 def index():
     # Save a user
     # User(username="cheezy23", email="seanmoylan1@icloud.com", password="1234").save()
-    #Location(latitude="1.2523523", longitude="2.252334", description="somthing", title="Stairs", spot_type="2").save()
+    
     return "Server running..."
 
 # GET all users
@@ -96,6 +96,23 @@ def get_locations():
 @app.route('/locations/<locationId>')
 def get_location(locationId):
     return "Specific location %s" %locationId
+
+
+# POST location
+@app.route('/locations/create', methods=['POST'])
+def save_location():
+    # Get the json data from the post request
+    recieved_location = request.get_json()
+    print(recieved_location)
+
+    new_location = Location(title=recieved_location["title"], 
+                        latitude=recieved_location["latitude"], 
+                        longitude=recieved_location["longitude"],
+                        description=recieved_location["description"],
+                        spot_type=recieved_location["spot_type"]).save()
+    
+    return jsonify(new_location)
+
 
 
 
