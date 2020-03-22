@@ -10,8 +10,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -41,13 +44,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private Retrofit retrofit;
 
-    LatLng myHouse;
-    Location newLocation;
+    private LatLng myLocation;
+    private Location newLocation;
 
     // Android Location class
-    android.location.Location myLocation;
-    FusedLocationProviderClient mFusedLocationProviderClient;
-    Boolean mLocationPermissionGranted;
+    private FusedLocationProviderClient mFusedLocationProviderClient;
+    private static final int FINE_LOCATION_REQUEST_CODE = 1;
 
 
     private List<Location> locations;
@@ -62,10 +64,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
 
         // Check that the user has given permission to access location services
-        checkLocationPermitions();
+        checkPermission(Manifest.permission.ACCESS_FINE_LOCATION, FINE_LOCATION_REQUEST_CODE);
+
+        // Get the current location
+        LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        android.location.Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+        try {
+            myLocation = new LatLng(location.getLatitude(), location.getLongitude());
+        }catch (Exception e){
+            Toast.makeText(this, "Error retrieving current location", Toast.LENGTH_LONG);
+        }
+
 
         Runnable runnable = new Runnable() {
             @Override
@@ -74,11 +87,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         };
 
-        Thread thread = new Thread(runnable);
-        thread.start();
+        Thread locate = new Thread(runnable);
+        locate.start();
 
-        //System.out.println(locations.toString());
-        // List of locations
+
+
 
 
 
@@ -86,20 +99,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    private void checkLocationPermitions() {
-        // Check user permissions are all granted
+    private void checkPermission(String permission, int requestCode) {
+
+        String[] perm = new String[]{permission};
+
+
+        if(ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_DENIED){
+            // Request the permission
+            ActivityCompat.requestPermissions(MapsActivity.this, new String[]{permission}, FINE_LOCATION_REQUEST_CODE);
+
+        } else {
+            Toast.makeText(this, "Permission is already granted", Toast.LENGTH_LONG);
+        }
+
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -119,7 +134,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void loadLocations() {
 
-        List<Location> list;
         // Send request to the server to compare credentials
         // Retrofit and Gson
         Gson gson = new GsonBuilder()
@@ -142,7 +156,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onResponse(Call<List<Location>> call, Response<List<Location>> response) {
                 if(response.isSuccessful()){
                     //locations = response.body();
-                    saveLocations(response.body());
+                    storeLocations(response.body());
                 }
 
 
@@ -158,7 +172,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //System.out.println(locations.get(2));
     }
 
-    private boolean saveLocations(List<Location> body) {
+    private boolean storeLocations(List<Location> body) {
         if(body != null){
             locations = body;
 
@@ -168,15 +182,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return false;
     }
 
+
+
+
     private void displayLocations() {
 
         for(Location loc : locations){
             Log.i("saveLocations", "Displaying locals");
-            System.out.println(loc.toString());
+
+            // Show the locations on the console
+            //System.out.println(loc.toString());
             LatLng pos = new LatLng(loc.getLatitude(), loc.getLongitude());
             mMap.addMarker(new MarkerOptions().position(pos).title(loc.getTitle()));
+
+            // Focus in on specific location
             if(loc.getTitle().contains("NUIG")){
-                CameraUpdate location = CameraUpdateFactory.newLatLngZoom(pos, 10);
+                CameraUpdate location = CameraUpdateFactory.newLatLngZoom(myLocation, 10);
                 mMap.animateCamera(location);
             }
         }

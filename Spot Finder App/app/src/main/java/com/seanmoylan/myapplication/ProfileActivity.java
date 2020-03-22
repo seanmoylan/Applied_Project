@@ -15,7 +15,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView username;
     TextView password;
     Button viewMap;
-    Button saveLocation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
         username = findViewById(R.id.usernameText);
         password = findViewById(R.id.passwordText);
         viewMap = findViewById(R.id.viewLocations);
-        saveLocation = findViewById(R.id.saveLocation);
+
 
         username.setText(getIntent().getStringExtra("username"));
         password.setText(getIntent().getStringExtra("password"));
@@ -40,12 +40,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        saveLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), CurrentLocationMap.class));
-            }
-        });
 
 
     }
