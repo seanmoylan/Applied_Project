@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/primaryLightColor"
+    tools:context="com.seanmoylan.myapplication.SaveLocation">
+
+
+    <TextView
+        android:id="@+id/titleTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/saveLocationTitle"
+        android:textAlignment="center"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="36sp"
+        android:paddingBottom="30dp"
+        android:paddingLeft="10dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/latitudeTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/latitude"
+        android:padding="10dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/longitudeTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/longitude"
+        android:padding="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/saveTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/title"
+        android:padding="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/descriptionTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/description"
+        android:padding="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>
