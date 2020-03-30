@@ -1,5 +1,8 @@
 package com.seanmoylan.myapplication.Classes;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -68,4 +71,5 @@ public class Location {
                 ", spot_type=" + spot_type +
                 '}';
     }
+
 }

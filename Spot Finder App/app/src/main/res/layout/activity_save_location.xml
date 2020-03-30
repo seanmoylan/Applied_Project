@@ -22,12 +22,13 @@
         android:paddingLeft="10dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/latitudeTxt"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/latitude"
         android:padding="10dp">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/latitudeTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -36,13 +37,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/longitudeTxt"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/longitude"
         android:padding="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/longitudeTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -50,13 +52,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/saveTitle"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/title"
         android:padding="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/saveTitleTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -64,16 +67,42 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/descriptionTxt"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/description"
         android:padding="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/descriptionTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:paddingTop="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button3"
+            android:background="@color/secondaryDarkColor"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="?android:buttonStyle"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/button2"
+            android:background="@color/secondaryColor"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Save" />
+    </LinearLayout>
+
 </LinearLayout>

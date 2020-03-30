@@ -17,6 +17,8 @@ import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -26,7 +28,11 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -39,16 +45,19 @@ import com.seanmoylan.myapplication.Classes.Login;
 import java.sql.Array;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
+    private Button saveBtn;
     private Retrofit retrofit;
 
     private LatLng myLocation;
+    private android.location.Location location;
     private Location newLocation;
 
     // Android Location class
-    private FusedLocationProviderClient mFusedLocationProviderClient;
+    private LocationManager locationManager;
+
     private static final int FINE_LOCATION_REQUEST_CODE = 1;
 
 
@@ -64,14 +73,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
+        saveBtn = findViewById(R.id.saveBtn);
+        saveBtn.setClickable(false);
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create Intent to start save location activity and pass coordinates
+                Intent saveActivityIntent = new Intent(getApplicationContext(), SaveLocation.class);
+                Bundle bundle = new Bundle();
+                bundle.putDouble("latitude", myLocation.latitude);
+                bundle.putDouble("longitude", myLocation.longitude);
+                saveActivityIntent.putExtras(bundle);
+                startActivity(saveActivityIntent);
+            }
+        });
 
         // Check that the user has given permission to access location services
         checkPermission(Manifest.permission.ACCESS_FINE_LOCATION, FINE_LOCATION_REQUEST_CODE);
 
         // Get the current location
-        LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        android.location.Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
         try {
             myLocation = new LatLng(location.getLatitude(), location.getLongitude());
@@ -197,12 +219,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             // Focus in on specific location
             if(loc.getTitle().contains("NUIG")){
-                CameraUpdate location = CameraUpdateFactory.newLatLngZoom(myLocation, 10);
+                CameraUpdate location = CameraUpdateFactory.newLatLngZoom(myLocation, 15);
+                mMap.addMarker(new MarkerOptions().position(myLocation).title("Current Location"));
                 mMap.animateCamera(location);
             }
         }
 
 
 
+    }
+
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        return false;
     }
 }
