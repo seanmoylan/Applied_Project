@@ -1,6 +1,5 @@
 package com.seanmoylan.myapplication;
 
-import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -21,16 +20,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -38,11 +32,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.seanmoylan.myapplication.Classes.Location;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.seanmoylan.myapplication.Classes.Login;
-
-import java.sql.Array;
 import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -60,6 +49,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private static final int FINE_LOCATION_REQUEST_CODE = 1;
 
+    // This bundle is used to pass data to the SaveLocations page
+    Bundle bundle = new Bundle();
 
     private List<Location> locations;
 
@@ -80,9 +71,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onClick(View view) {
                 // Create Intent to start save location activity and pass coordinates
                 Intent saveActivityIntent = new Intent(getApplicationContext(), SaveLocation.class);
-                Bundle bundle = new Bundle();
-                bundle.putDouble("latitude", myLocation.latitude);
-                bundle.putDouble("longitude", myLocation.longitude);
+
+
                 saveActivityIntent.putExtras(bundle);
                 startActivity(saveActivityIntent);
             }
@@ -223,6 +213,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.addMarker(new MarkerOptions().position(myLocation).title("Current Location"));
                 mMap.animateCamera(location);
             }
+
+            bundle.putDouble("latitude", myLocation.latitude);
+            bundle.putDouble("longitude", myLocation.longitude);
         }
 
 

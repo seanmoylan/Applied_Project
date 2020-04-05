@@ -3,6 +3,7 @@ package com.seanmoylan.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.seanmoylan.myapplication.Classes.Location;
@@ -13,6 +14,8 @@ public class SaveLocation extends AppCompatActivity {
     private TextInputEditText longitudeTxt;
     private TextInputEditText titleTxt;
     private TextInputEditText descriptionTxt;
+    private Button cancelBtn;
+    private Button saveBtn;
 
     Location newLocation;
 
@@ -29,14 +32,24 @@ public class SaveLocation extends AppCompatActivity {
 
 
 
-        // TODO: Fix this code
-        // Retrieve coordinates for new location passed in the intent
-        Bundle recievedData = getIntent().getExtras();
 
-        if(recievedData != null){
-            //newLocation.setLongitude(recievedData.getDouble("longitude"));
-            //newLocation.setLatitude(recievedData.getDouble("latitude"));
+        // TODO: Fix this code
+        if(populateCoordinates()){
+            latitudeTxt.setText(newLocation.getLatitude().toString());
+            longitudeTxt.setText(newLocation.getLongitude().toString());
+        }
+    }
+
+    private boolean populateCoordinates() {
+        Bundle dataRecieved = getIntent().getExtras();
+
+        if (dataRecieved != null)
+        {
+            newLocation.setLatitude(dataRecieved.getDouble("latitude"));
+            newLocation.setLongitude(dataRecieved.getDouble("longitude"));
+            return true;
         }
 
+        return false;
     }
 }
