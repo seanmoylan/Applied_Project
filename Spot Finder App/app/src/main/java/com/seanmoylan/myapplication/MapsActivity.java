@@ -202,6 +202,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
+    //TODO Create a custom markerwindow for displaying a spots info when marker is clicked
+
     @Override
     public boolean onMarkerClick(Marker marker) {
         return false;

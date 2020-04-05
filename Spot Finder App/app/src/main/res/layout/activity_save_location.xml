@@ -82,28 +82,38 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:paddingTop="150dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="423dp"
+        android:layout_height="137dp"
+        android:layout_marginTop="100dp">
+
+        <Button
+            android:id="@+id/saveLocationBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="69dp"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/secondaryColor"
+            android:text="Save" />
 
         <Button
             android:id="@+id/canelBtn"
-            android:background="@color/secondaryDarkColor"
-            android:layout_width="100dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="?android:buttonStyle"
-            android:text="Cancel" />
-
-        <Button
-            android:id="@+id/saveBtn"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="27dp"
+            android:layout_marginBottom="18dp"
+            android:layout_toStartOf="@+id/saveLocationBtn"
             android:background="@color/secondaryColor"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Save" />
-    </LinearLayout>
+            android:paddingBottom="10dp"
+            android:text="Cancel"
+            android:textSize="15dp" />
+
+    </RelativeLayout>
 
 </LinearLayout>

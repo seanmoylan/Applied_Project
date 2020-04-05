@@ -7,8 +7,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
@@ -36,22 +40,51 @@ public class SaveLocation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_location);
 
-        // Connect to TextFields
+        // Connect to TextFields and buttons
         latitudeTxt= findViewById(R.id.latitudeTxt);
         longitudeTxt = findViewById(R.id.longitudeTxt);
         titleTxt = findViewById(R.id.saveTitleTxt);
         descriptionTxt = findViewById(R.id.descriptionTxt);
+        saveBtn = findViewById(R.id.saveLocationBtn);
+        cancelBtn = findViewById(R.id.canelBtn);
+
 
         // Stop the user from editing the coordinates
         latitudeTxt.setFocusable(false);
         longitudeTxt.setFocusable(false);
 
+        // Display current coordinates in textfields
         if(populateCoordinates()){
             latitudeTxt.setText(String.valueOf(latitude));
             longitudeTxt.setText(String.valueOf(longitude));
         }
 
-        saveLocation();
+        // Save Click listener
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkForInput()){
+                    Location newLocation = new Location();
+                    newLocation.setLatitude(latitude);
+                    newLocation.setLongitude(longitude);
+                    newLocation.setTitle(titleTxt.getText().toString());
+                    newLocation.setDescription(descriptionTxt.getText().toString());
+
+                    // Pass location to saveLocation method
+                    saveLocation(newLocation);
+                }
+            }
+        });
+
+        // Cancel Click listener
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+            }
+        });
+
+
     }
 
     private boolean populateCoordinates() {
@@ -67,7 +100,11 @@ public class SaveLocation extends AppCompatActivity {
         return false;
     }
 
-    private void saveLocation(){
+    private boolean checkForInput(){
+        return true;
+    }
+
+    private void saveLocation(Location location){
 
         // Test Location
         Location l = new Location();
@@ -95,6 +132,11 @@ public class SaveLocation extends AppCompatActivity {
             @Override
             public void onResponse(Call<Location> call, Response<Location> response) {
                 System.out.println("Code: " + response.code());
+
+                if(response.isSuccessful()){
+                    //Return user to the map
+                    startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                }
             }
 
             @Override
