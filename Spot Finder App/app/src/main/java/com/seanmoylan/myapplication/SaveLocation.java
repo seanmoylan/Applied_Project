@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.seanmoylan.myapplication.Classes.Location;
 import com.seanmoylan.myapplication.Classes.Login;
+import com.seanmoylan.myapplication.Classes.Tools;
 
 public class SaveLocation extends AppCompatActivity {
 
@@ -29,10 +30,11 @@ public class SaveLocation extends AppCompatActivity {
     private Button cancelBtn;
     private Button saveBtn;
 
-    Retrofit retrofit;
+    private Retrofit retrofit;
 
-    Location newLocation;
-    double latitude, longitude;
+    private Location newLocation;
+    private double latitude, longitude;
+    private String title, description;
 
 
     @Override
@@ -61,9 +63,17 @@ public class SaveLocation extends AppCompatActivity {
 
         // Save Click listener
         saveBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                if(checkForInput()){
+
+                // Set to string variables as there was an issue checking the string straight from the EditText fields
+                title = titleTxt.getText().toString();
+                description = descriptionTxt.getText().toString();
+
+                // Check that title and des have input from user
+                // If so then save location
+                if(checkForInput() == true){
                     Location newLocation = new Location();
                     newLocation.setLatitude(latitude);
                     newLocation.setLongitude(longitude);
@@ -87,6 +97,7 @@ public class SaveLocation extends AppCompatActivity {
 
     }
 
+    // Used to recieve users coordinates from the Maps view
     private boolean populateCoordinates() {
         Bundle dataRecieved = getIntent().getExtras();
 
@@ -100,7 +111,18 @@ public class SaveLocation extends AppCompatActivity {
         return false;
     }
 
+    // Make sure user has filled in all fields before saving to database
     private boolean checkForInput(){
+
+        if(title.isEmpty() && title.length() <= 15){
+            Tools.exceptionToast(this, "Please enter a title name with no more than 15 characters");
+            return false;
+        }
+
+        if(description.isEmpty() && description.length() <= 30){
+            Tools.exceptionToast(this, "Please enter a description with no more than 30 characters");
+            return false;
+        }
         return true;
     }
 
@@ -108,11 +130,10 @@ public class SaveLocation extends AppCompatActivity {
 
         // Test Location
         Location l = new Location();
-        l.setLongitude(2.23523);
-        l.setLatitude(3.23523);
-        l.setTitle("Hello World");
-        l.setDescription("Some generic text");
-        l.setType("stair");
+        l.setLongitude(longitude);
+        l.setLatitude(latitude);
+        l.setTitle(titleTxt.getText().toString());
+        l.setDescription(descriptionTxt.getText().toString());
 
         // Set up retrofit instance for sending POST to server
         // Retrofit and Gson

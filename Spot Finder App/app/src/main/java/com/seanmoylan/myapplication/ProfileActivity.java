@@ -15,6 +15,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView username;
     TextView password;
     Button viewMap;
+    Button viewSavedLocations;
 
 
     @Override
@@ -28,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
         username = findViewById(R.id.usernameText);
         password = findViewById(R.id.passwordText);
         viewMap = findViewById(R.id.viewLocations);
+        viewSavedLocations = findViewById(R.id.viewMyLocations);
 
 
         username.setText(getIntent().getStringExtra("username"));
@@ -37,6 +39,14 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+            }
+        });
+
+        viewSavedLocations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO Implement this later to display a given users saves
+                //startActivity(new Intent(getApplicationContext(), MapsActivity.class));
             }
         });
 

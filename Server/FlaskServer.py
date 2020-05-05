@@ -108,8 +108,7 @@ def save_location():
     new_location = Location(title=recieved_location["title"], 
                         latitude=recieved_location["latitude"], 
                         longitude=recieved_location["longitude"],
-                        description=recieved_location["description"],
-                        spot_type=recieved_location["spot_type"]).save()
+                        description=recieved_location["description"]).save()
     
     return jsonify(new_location)
 
@@ -125,7 +124,6 @@ class Location(db.Document):
     longitude = db.FloatField(required=True)
     title = db.StringField(required=True)
     description = db.StringField()
-    spot_type = db.StringField()
 
 
 class User(db.Document):

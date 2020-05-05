@@ -15,10 +15,9 @@ public class Location {
 
     private Double latitude;
     private Double longitude;
+    private String user;
     private String title;
     private String description;
-    private String spot_type;
-
 
 
     public Double getLatitude() {
@@ -37,6 +36,14 @@ public class Location {
         this.longitude = longitude;
     }
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -53,22 +60,15 @@ public class Location {
         this.description = description;
     }
 
-    public String getType() {
-        return spot_type;
-    }
-
-    public void setType(String type) {
-        this.spot_type = type;
-    }
 
     @Override
     public String toString() {
         return "Location{" +
                 "latitude=" + latitude +
                 ", longitude=" + longitude +
+                ", user='" + user + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", spot_type=" + spot_type +
                 '}';
     }
 
