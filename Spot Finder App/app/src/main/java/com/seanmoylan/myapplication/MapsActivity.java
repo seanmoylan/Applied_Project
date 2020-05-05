@@ -25,16 +25,18 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.seanmoylan.myapplication.Classes.Location;
+import com.seanmoylan.myapplication.Classes.PopUp;
 
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Button saveBtn;
@@ -115,7 +117,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -171,10 +172,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return false;
     }
 
-
-
-
     private void displayLocations() {
+
+        // Zoom in on current location and display it as a different colour to the spots
+        final CameraUpdate location = CameraUpdateFactory.newLatLngZoom(myLocation, 15);
+        mMap.addMarker(new MarkerOptions()
+                .position(myLocation)
+                .title("Current Location")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+        mMap.animateCamera(location);
 
         for(Location loc : locations){
             Log.i("saveLocations", "Displaying locals");
@@ -182,12 +188,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // Show the locations on the console
             //System.out.println(loc.toString());
             LatLng pos = new LatLng(loc.getLatitude(), loc.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(pos).title(loc.getTitle()));
+            mMap.addMarker(new MarkerOptions().position(pos).title(loc.getTitle()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
 
-
-            CameraUpdate location = CameraUpdateFactory.newLatLngZoom(myLocation, 15);
-            mMap.addMarker(new MarkerOptions().position(myLocation).title("Current Location"));
-            mMap.animateCamera(location);
 
             // Add coordinates to bundle
             coordinatesBundle.putDouble("latitude", myLocation.latitude);
@@ -197,15 +199,48 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             saveBtn.setVisibility(View.VISIBLE);
         }
 
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                // Get Info needed to display on popup and send using bundle
+                final String title = marker.getTitle();
 
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        displayTappedLocation(title);;
+                    }
+                };
+                Thread locate = new Thread(runnable);
+                locate.start();
+
+
+            }
+        });
+
+    }
+
+    private void displayTappedLocation(String title) {
+        Location locInfo;
+        for (Location loc:locations) {
+            if(loc.getTitle().contains(title)) {
+                System.out.println("Found location");
+                locInfo = loc;
+                Bundle info = new Bundle();
+                info.putDouble("latitude", locInfo.getLatitude());
+                info.putDouble("longitude", locInfo.getLongitude());
+                info.putString("title", locInfo.getTitle());
+                info.putString("description", locInfo.getDescription());
+
+                Intent showSpot = new Intent(MapsActivity.this, PopUp.class);
+                showSpot.putExtras(info);
+                startActivity(showSpot);
+                return;
+            }
+
+        }
 
     }
 
 
-    //TODO Create a custom markerwindow for displaying a spots info when marker is clicked
-
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        return false;
-    }
 }

@@ -26,6 +26,9 @@ public interface FlaskAPI {
     @GET("/locations")
     Call<List<Location>> getLocations();
 
+    @GET("/location")
+    Call<Location> getLocation(@Body String id);
+
     @POST("/locations/create")
     Call<Location> createLocation(@Body Location location);
 

@@ -42,6 +42,10 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ProfileActivity"  />
+        <activity android:name=".Classes.PopUp"
+            android:theme="@style/AppTheme.CustomTheme">
+
+        </activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

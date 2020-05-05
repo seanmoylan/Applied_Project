@@ -92,10 +92,11 @@ def get_locations():
     return jsonify(locations)
 
 
-# GET location
-@app.route('/locations/<locationId>')
-def get_location(locationId):
-    return "Specific location %s" %locationId
+# Get location using its unique id  
+@app.route('/location/<id>')
+def get_location(id):
+    loc = Location.objects.get(id=id)
+    return jsonify(loc)
 
 
 # POST location
@@ -124,6 +125,8 @@ class Location(db.Document):
     longitude = db.FloatField(required=True)
     title = db.StringField(required=True)
     description = db.StringField()
+    spot_type = db.StringField()
+
 
 
 class User(db.Document):

@@ -19,7 +19,6 @@ public class Location {
     private String title;
     private String description;
 
-
     public Double getLatitude() {
         return latitude;
     }
@@ -61,6 +60,7 @@ public class Location {
     }
 
 
+
     @Override
     public String toString() {
         return "Location{" +
@@ -71,5 +71,4 @@ public class Location {
                 ", description='" + description + '\'' +
                 '}';
     }
-
 }

@@ -99,15 +99,15 @@ public class SaveLocation extends AppCompatActivity {
 
     // Used to recieve users coordinates from the Maps view
     private boolean populateCoordinates() {
-        Bundle dataRecieved = getIntent().getExtras();
+        Bundle dataReceived = getIntent().getExtras();
 
-        if (dataRecieved != null)
+        if (dataReceived != null)
         {
-            latitude = dataRecieved.getDouble("latitude");
-            longitude = dataRecieved.getDouble("longitude") ;
+            latitude = dataReceived.getDouble("latitude");
+            longitude = dataReceived.getDouble("longitude") ;
             return true;
         }
-
+        Tools.exceptionToast(this, "Error: No coordinates received");
         return false;
     }
 
