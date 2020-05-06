@@ -107,7 +107,7 @@ public class ViewLocations extends AppCompatActivity {
         Log.d(TAG, "initRecyclerView: started");
 
         recyclerView = findViewById(R.id.recyclerView);
-        adapter = new RecyclerViewAdapter(this, titles, descriptions );
+        adapter = new RecyclerViewAdapter(this, (ArrayList<Location>) locations );
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
