@@ -3,38 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B94242"
     android:gravity="center_vertical"
     android:orientation="vertical">
 
 
-    <com.google.android.material.textfield.TextInputLayout
 
+    <TextView
+        android:id="@+id/titleTxt"
+        android:textStyle="bold"
+        android:padding="20dp"
+        android:textSize="30dp"
+        android:text="Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/title"
-        android:padding="10dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/titleTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none"
-            />
+        android:inputType="none"
+        />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-
+    <TextView
+        android:id="@+id/descriptionTxt"
+        android:textSize="25dp"
+        android:padding="20dp"
+        android:text="Description"
+        android:textStyle="italic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/description"
-        android:padding="10dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/descriptionTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none"
-            />
+        android:inputType="none"
+        />
 
-    </com.google.android.material.textfield.TextInputLayout>
+
 </LinearLayout>

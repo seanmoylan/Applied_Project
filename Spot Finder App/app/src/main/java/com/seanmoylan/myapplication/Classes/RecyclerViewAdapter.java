@@ -23,8 +23,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<String> mTitles = new ArrayList<>();
-    private ArrayList<String> mDescriptions = new ArrayList<>();
     private ArrayList<Location> locals = new ArrayList<>();
     private Context mContext;
 
@@ -54,13 +52,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.title.setText(loc.getTitle());
         holder.description.setText(loc.getDescription());
 
-        // TODO maybe render a layout when the item is clicked
+        // When the user clicks on one of the cards, the location will be displayed on a map
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Log.d(TAG, "onClick: Clicked on: " + loc.getTitle());
+                // Intent to display location on map that the user selected
                 Intent intent = new Intent(mContext, DisplayLocation.class);
 
+                // Bundle that passes the info of the location to display
                 Bundle location = new Bundle();
                 location.putDouble("latitude", loc.getLatitude());
                 location.putDouble("longitude", loc.getLongitude());
@@ -69,10 +70,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 intent.putExtras(location);
 
-
                 mContext.startActivity(intent);
-
-
             }
         });
 
