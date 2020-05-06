@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.seanmoylan.myapplication.Classes.Tools;
+
 public class ProfileActivity extends AppCompatActivity {
 
 
@@ -24,7 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         // Show that user has logged in
-        Toast.makeText(this, ("The user that logged in was " + getIntent().getStringExtra("username")),Toast.LENGTH_LONG).show();
+        Tools.exceptionToast(this, ("The user that logged in was " + getIntent().getStringExtra("username")));
 
         username = findViewById(R.id.usernameText);
         password = findViewById(R.id.passwordText);
@@ -45,8 +47,8 @@ public class ProfileActivity extends AppCompatActivity {
         viewSavedLocations.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO Implement this later to display a given users saves
-                //startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                //TODO RecylerView
+                startActivity(new Intent(getApplicationContext(), ViewLocations.class));
             }
         });
 

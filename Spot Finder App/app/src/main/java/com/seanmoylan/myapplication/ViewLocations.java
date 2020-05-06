@@ -10,72 +10,105 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.seanmoylan.myapplication.Classes.Location;
+import com.seanmoylan.myapplication.Classes.RecyclerViewAdapter;
+import com.seanmoylan.myapplication.Classes.Tools;
 import com.seanmoylan.myapplication.Classes.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ViewLocations extends AppCompatActivity {
+    private static final String TAG = "ViewLocations";
 
-    Retrofit retrofit;
-    RecyclerView recyclerView;
-    List<Location> locations;
-    Location[] locals;
+    // Variables
+    private Retrofit retrofit;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager lManager;
+
+    private List<Location> locations;
+    private ArrayList<String> titles = new ArrayList<>();
+    private ArrayList<String> descriptions = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_locations);
+        Log.d(TAG, "onCreate: started");
 
         // Get the locations and store them in a List
-        getLocations();
-
-        if(locations != null){
-
-            locals = (Location[]) locations.toArray();
-            System.out.println("This is the first location in the array" + locals[0]);
-            recyclerView = findViewById(R.id.recyclerView);
-            LocationsViewAdapter myAdapter = new LocationsViewAdapter(this, locals);
-            recyclerView.setAdapter(myAdapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        }
-        // Initialize adapter class
-
-
+        initLocations();
     }
 
-    public void getLocations(){
+    // Makes the request to the server for all locations
+    public void initLocations(){
         // Retrofit
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
         retrofit = new Retrofit.Builder()
                 .baseUrl("http://localhost:5000/")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         FlaskAPI flaskApi = retrofit.create(FlaskAPI.class);
         Call<List<Location>> call = flaskApi.getLocations();
 
+
+        System.out.println(call.request());
+
         call.enqueue(new Callback<List<Location>>() {
             @Override
             public void onResponse(Call<List<Location>> call, Response<List<Location>> response) {
-                System.out.println(response.code());
                 if(response.isSuccessful()){
-                    // Add locations to the list of locations
-                    System.out.println(response.code());
-                    locations = response.body();
-                    System.out.println(locations.get(0));
+                    //locations = response.body();
+                    storeLocations(response.body());
                 }
+
 
             }
 
             @Override
             public void onFailure(Call<List<Location>> call, Throwable t) {
-                System.out.println("Failed to load locations!");
-                // TODO Add a Toast here so the user knows when this fails
+                Toast.makeText(getApplicationContext(), "Unable to load Locations!", Toast.LENGTH_LONG);
+                System.out.println(t.getMessage());
             }
         });
 
-        //System.out.println(call.request());
 
+    }
+
+    // If the server request is successful then this method is a=called and the locations are stored in an List
+    private boolean storeLocations(List<Location> body) {
+        if(body != null){
+            locations = body;
+
+            // Add the title and description from each location to their own arrayList so they can be passed to the RecyclerView
+            for(Location loc : locations){
+                titles.add(loc.getTitle());
+                descriptions.add(loc.getDescription());
+            }
+            initRecyclerView();
+            Log.d(TAG, "storeLocations: Locations stored");
+            return true;
+        }
+        return false;
+    }
+
+    private void initRecyclerView(){
+        Log.d(TAG, "initRecyclerView: started");
+
+        recyclerView = findViewById(R.id.recyclerView);
+        adapter = new RecyclerViewAdapter(this, titles, descriptions );
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
