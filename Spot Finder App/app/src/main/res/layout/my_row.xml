@@ -12,13 +12,13 @@
             android:padding="16dp"
             android:layout_margin="10dp"
             android:id="@+id/relativeLayout"
-            android:background="@color/primaryColor">
+            >
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:src="@drawable/ic_navigation_black_24dp"/>
+                android:src="@drawable/ic_place_orange_24dp"/>
 
             <TextView
                 android:id="@+id/titleTxt"
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/titleTxt"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="63dp"
+                android:layout_marginTop="35dp"
                 android:layout_toRightOf="@+id/imageView"
                 android:text="Description"
                 android:textSize="18sp" />

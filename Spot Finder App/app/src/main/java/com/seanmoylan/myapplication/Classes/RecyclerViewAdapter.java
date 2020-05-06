@@ -1,7 +1,9 @@
 package com.seanmoylan.myapplication.Classes;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.view.DisplayCutout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.seanmoylan.myapplication.DisplayLocation;
 import com.seanmoylan.myapplication.R;
 
 import java.util.ArrayList;
@@ -49,6 +52,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: Clicked on: " + mTitles.get(position));
+                Intent intent = new Intent(mContext, DisplayLocation.class);
+                mContext.startActivity(intent);
+
+                //TODO Pass location information to the DisplayLocation class
             }
         });
 

@@ -35,7 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         username.setText(getIntent().getStringExtra("username"));
-        password.setText(getIntent().getStringExtra("password"));
+        //password.setText(getIntent().getStringExtra("password"));
 
         viewMap.setOnClickListener(new View.OnClickListener() {
             @Override

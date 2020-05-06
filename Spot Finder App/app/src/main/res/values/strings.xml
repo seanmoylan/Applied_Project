@@ -19,4 +19,5 @@
     <string name="longitude">Longitude</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
+    <string name="title_activity_display_location">Map</string>
 </resources>

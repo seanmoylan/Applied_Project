@@ -44,7 +44,7 @@ public class PopUp extends Activity {
         int height = dm.heightPixels;
 
         // Will display the popup window to 80% of the screen
-        getWindow().setLayout((int) (width * 0.6) ,(int) (height*0.6));
+        getWindow().setLayout((int) (width * 0.6) ,(int) (height*0.3));
     }
 
     private void getIntentData() {
