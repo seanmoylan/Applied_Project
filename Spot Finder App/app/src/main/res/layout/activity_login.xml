@@ -7,13 +7,13 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     tools:context="com.seanmoylan.myapplication.LoginActivity"
-    android:background="@color/orange">
+    android:background="@drawable/colour_gradient">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginTop="60dp"
-        android:src="@drawable/spot_finder"/>
+        android:src="@drawable/spot_finder_white" />
 
     <EditText
         android:id="@+id/usernameText"
@@ -40,8 +40,9 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        android:background="@color/primaryTextColor"
+        android:background="@drawable/rounded_button"
         android:text="@string/login"
+
         android:textColor="@color/secondaryDarkColor" />
 
     <LinearLayout

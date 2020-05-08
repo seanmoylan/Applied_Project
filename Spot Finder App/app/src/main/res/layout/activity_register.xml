@@ -7,14 +7,12 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     tools:context="com.seanmoylan.myapplication.RegisterActivity"
-    android:background="#BB6F0B">
+    android:background="@drawable/colour_gradient">
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="60dp"
-        android:padding="40dp"
-        android:src="@drawable/ic_place_white_24dp"/>
+        android:layout_height="300dp"
+        android:src="@drawable/spot_finder_white"/>
 
     <EditText
         android:id="@+id/regUsernameText"
