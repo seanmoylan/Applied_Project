@@ -1,0 +1,29 @@
+[{
+  "_id": {
+    "$oid": "5e5c0bebbe45b2ba9018050e"
+  },
+  "username": "cheezy23",
+  "email": "seanmoylan1@icloud.com",
+  "password": "1234"
+},{
+  "_id": {
+    "$oid": "5eb6b32f3c40370bb9909680"
+  },
+  "username": "john2",
+  "email": "jiuhn@icloud.com",
+  "password": "1234"
+},{
+  "_id": {
+    "$oid": "5eb6b39bae6493899298959e"
+  },
+  "username": "james",
+  "email": "james@gmail.com",
+  "password": "3s0e3a0n"
+},{
+  "_id": {
+    "$oid": "5eb6d7a91a62160cfb3c5704"
+  },
+  "username": "sean1",
+  "email": "sean123@icloud.com",
+  "password": "1234"
+}]

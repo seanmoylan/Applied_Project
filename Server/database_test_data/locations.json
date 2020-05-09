@@ -1,0 +1,142 @@
+[{
+  "_id": {
+    "$oid": "5e63a88e2e5fa3290f70a12d"
+  },
+  "latitude": 53.2788,
+  "longitude": -9.0066,
+  "title": "My house",
+  "description": "somthing else",
+  "spot_type": "3"
+},{
+  "_id": {
+    "$oid": "5e651f78d6a0dcda18df7481"
+  },
+  "latitude": 53.27889,
+  "longitude": -9.0107,
+  "title": "GMIT",
+  "description": "Galway Mayo Institute of Technology",
+  "spot_type": "2"
+},{
+  "_id": {
+    "$oid": "5e65202bd6a0dcda18df7482"
+  },
+  "latitude": 41.3832,
+  "longitude": 2.1667,
+  "title": "Macba",
+  "description": "fun spot for all skill sets",
+  "spot_type": "3"
+},{
+  "_id": {
+    "$oid": "5e6520b8d6a0dcda18df7483"
+  },
+  "latitude": 53.2839,
+  "longitude": -9.0652,
+  "title": "NUIG L Ledge",
+  "description": "Fun L shaped ledge that can be used for diffrent grinds",
+  "spot_type": "2"
+},{
+  "_id": {
+    "$oid": "5e664f1e0dc5b86989e24bd4"
+  },
+  "latitude": 53.2796,
+  "longitude": -9.0625,
+  "title": "NUIG Campus",
+  "description": "NUI",
+  "spot_type": "1"
+},{
+  "_id": {
+    "$oid": "5e664f2a0dc5b86989e24bd5"
+  },
+  "latitude": 54.270531,
+  "longitude": -8.60917,
+  "title": "Two block steps",
+  "description": "Round two ledges",
+  "spot_type": "1"
+},{
+  "_id": {
+    "$oid": "5e664f360dc5b86989e24bd6"
+  },
+  "latitude": 54.271265,
+  "longitude": -8.48473,
+  "title": "Handrail",
+  "description": "Metal waist high flat rails",
+  "spot_type": "2"
+},{
+  "_id": {
+    "$oid": "5e664f400dc5b86989e24bd7"
+  },
+  "latitude": 54.275045,
+  "longitude": -8.49604,
+  "title": "Long ledge",
+  "description": "Concrete 2ft high ledge",
+  "spot_type": "1"
+},{
+  "_id": {
+    "$oid": "5e664f4a0dc5b86989e24bd8"
+  },
+  "latitude": 54.2753,
+  "longitude": -8.497504,
+  "title": "Flat Rail",
+  "description": "Metal 2ft high rail",
+  "spot_type": "2"
+},{
+  "_id": {
+    "$oid": "5e664f540dc5b86989e24bd9"
+  },
+  "latitude": 54.271312,
+  "longitude": -8.477321,
+  "title": "Flat ledge",
+  "description": "Marble flat ledge/3 Steps",
+  "spot_type": "1"
+},{
+  "_id": {
+    "$oid": "5e664f5e0dc5b86989e24bda"
+  },
+  "latitude": 54.269073,
+  "longitude": -8.466718,
+  "title": "Banks",
+  "description": "Steep bricked banks",
+  "spot_type": "3"
+},{
+  "_id": {
+    "$oid": "5e664f690dc5b86989e24bdb"
+  },
+  "latitude": 53.279349,
+  "longitude": -9.061452,
+  "title": "Step Ledges",
+  "description": "Three 1 foot high concrete ledges",
+  "spot_type": "1"
+},{
+  "_id": {
+    "$oid": "5e664f780dc5b86989e24bdc"
+  },
+  "latitude": 53.286175,
+  "longitude": -9.036098,
+  "title": "Handrail",
+  "description": "Metal 2ft high rail",
+  "spot_type": "2"
+},{
+  "_id": {
+    "$oid": "5eb6b30f3c40370bb990967f"
+  },
+  "latitude": 54.26937288,
+  "longitude": -8.50086363,
+  "title": "my current location",
+  "description": "location"
+},{
+  "_id": {
+    "$oid": "5eb6b3c3ae6493899298959f"
+  },
+  "latitude": 54.26937895,
+  "longitude": -8.5008211,
+  "title": "my current location",
+  "description": "location"
+},{
+  "_id": {
+    "$oid": "5eb6d8581a62160cfb3c5705"
+  },
+  "latitude": 53.27889,
+  "longitude": -9.0107,
+  "title": "Example",
+  "description": "Example"
+}]
