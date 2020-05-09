@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primaryTextColor"
     tools:context="com.seanmoylan.myapplication.ProfileActivity">
 
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="36dp"
-        android:src="@drawable/ic_person_black_24dp"
+        android:src="@drawable/spot_finder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,19 +19,18 @@
 
     <TextView
         android:id="@+id/usernameText"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="32dp"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
         android:text="Username"
         android:textAlignment="center"
+        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        android:textSize="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.434" />
-
 
     <Button
         android:id="@+id/viewMyLocations"

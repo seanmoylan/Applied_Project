@@ -9,6 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ import com.seanmoylan.myapplication.Classes.Login;
 import com.seanmoylan.myapplication.Classes.User;
 
 public class RegisterActivity extends AppCompatActivity {
+    private static final String TAG = "RegisterActivity";
 
     EditText usernameTxt;
     EditText emailTxt;
@@ -37,6 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         usernameTxt = findViewById(R.id.regUsernameText);
+        emailTxt = findViewById(R.id.regEmailText);
         passwordTxt = findViewById(R.id.regPasswordText);
         confPasswordTxt = findViewById(R.id.regConfirmPasswordText);
         loginText = findViewById(R.id.regSignIn);
@@ -57,14 +60,15 @@ public class RegisterActivity extends AppCompatActivity {
 
         final Intent profileIntent = new Intent(this, ProfileActivity.class);
 
-        final User user = buildUser();
+
 
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
+                User user = buildUser();
+                profileIntent.putExtra("username", user.getUsername());
                 if(createUser(user)){
                     startActivity(profileIntent);
                 }
@@ -79,8 +83,10 @@ public class RegisterActivity extends AppCompatActivity {
             user.setUsername(usernameTxt.getText().toString());
             user.setEmail(emailTxt.getText().toString());
             user.setPassword(passwordTxt.getText().toString());
+            Log.d(TAG, "buildUser: user info recieved");
         }catch (Exception e){
             System.out.println(e.getMessage());
+            Log.d(TAG, "buildUser: user info not recieved");
         }
 
 

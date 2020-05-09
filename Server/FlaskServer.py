@@ -23,16 +23,13 @@ db.init_app(app)
 # Root directory
 @app.route("/")
 def index():
-    # Save a user
-    # User(username="cheezy23", email="seanmoylan1@icloud.com", password="1234").save()
-    
+    # Show that the server is running
     return "Server running..."
 
 # GET all users
 @app.route('/users')
 def get_users():
     user = User.objects()
-
     return jsonify(user)
 
 
@@ -49,9 +46,9 @@ def create_user():
 
     # Get the json data from the post request
     user_json = request.get_json()
+    print(request.get_json())
 
-    # Try saving to the database, if there is an error 
-
+    # Try saving to the database
     newuser = User(username = user_json['username'], email = user_json['email'], password = user_json['password']).save()
     return jsonify(newuser)
 

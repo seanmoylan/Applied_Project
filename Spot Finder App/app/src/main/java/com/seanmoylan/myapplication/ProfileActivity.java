@@ -34,7 +34,8 @@ public class ProfileActivity extends AppCompatActivity {
         viewSavedLocations = findViewById(R.id.viewMyLocations);
 
 
-        username.setText(getIntent().getStringExtra("username"));
+        String usernameTxt = getIntent().getStringExtra("username");
+        username.setText("Logged in as: " + usernameTxt);
         //password.setText(getIntent().getStringExtra("password"));
 
         viewMap.setOnClickListener(new View.OnClickListener() {
