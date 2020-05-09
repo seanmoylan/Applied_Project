@@ -25,6 +25,7 @@ This repo contains the Dissertation work of Sean Moylan and Shane Moran.
 | [MongoDB 4.2.2](https://www.mongodb.com/)                    | Database for Application                              |
 | Terminal                                                     | Used for running the server and retrieving any errors |
 | macOS Catalina - 10.15.4                                     | OS used for the development of the Project            |
+| [Sublime Text](https://www.sublimetext.com/)                 | Text editor used for coding in python                 |
 
 
 
@@ -73,10 +74,6 @@ Asumming you have all the technologies listed above installed on your device ple
 
 9. Now the text "Server is running..." should be displayed
 
-10. See screenshot below of server taking requests
-
-    ![Flask Server](/Users/seanmoylan/Desktop/Screenshot 2020-05-09 at 17.26.03.png)
-
 ### Database
 
 1. Please visit the site suited to your devise for a full breakdown of how to set up MongoDB
@@ -85,9 +82,26 @@ Asumming you have all the technologies listed above installed on your device ple
 4. [Linux](https://docs.mongodb.com/manual/administration/install-on-linux/)
 5. Once you have Mongo fully installed on your device, the FlaskServery.py will create an instance of a database when it is run for the first time.
 
-## Testing
+## Development Environment
 
+During the development of this Application I would always get everything open on my laptop so I can clearly see what iI am doing. 
 
+1. To start I open Google Chrome on both my Android device and my laptop
 
+2. Type [chrome://inspect/#devices](chrome://inspect/#devices) which gives me a developer tool to alow my mobile device to access my laptops localhost where the server will be running
 
+   ![](images/chrome.png)
 
+3. On my mobile device I can then enter the address https://localhost:5000 to access the server.
+
+4. Now I open my FlaskServer.py file along with the terminal and start the server
+
+   ![](images/terminal&sublime.png)
+
+5. Lastly I open Android Studio where I can then run the app on my mobile device and observe each step from the UI to the database as they unfold.
+
+   ![](images/androidstudio.png)
+
+   
+
+   
