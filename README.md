@@ -1,4 +1,5 @@
-# Overview 
+# ![](images/SpotFinder.png)Overview 
+
 Spot Finder is an Android Application designed to help skaters locate popular spots around the globe that they can skate at. From a city plaza to a stair set located behind a rural building, this app is made to help the skater locate areas for them to skate. This means if someone was to travel to a new country/city they would be able to easily locate areas that local skaters have saved on the app without having to painfully search around massive areas for a certain type of spot they are looking for e.g skatepark, outdoor skatepark, stair set, hand rail, plaza etc.
 
 For a short screencast preview of this app working, navigate to the folder `Screencast` where you will find a short 2 minute video:
@@ -95,20 +96,34 @@ Assuming you have all the technologies listed above installed on your device ple
 1. Please use link associated with your OS below for a full installation guide.
 
    [Windows](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)  [Mac](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)  [Linux](https://docs.mongodb.com/manual/administration/install-on-linux/)
-5. Once you have Mongo fully installed on your device, the FlaskServery.py will create a new instance of a database when it is run for the first time.
-6. Alternatively you can install MangoDB Compass.
-7. Once fully installed click "Fill in connection fields individually" which is displayed under the "New Connection" heading
-8. The fields shown should be autofilled to Hostname: `localhost` and Port: `27017` by default
-9. Leave authentication as None and select `connect`
-10. Select the test database which will appear on the left hand side of the window
-11. Now select `Create Collection`
-12. You will need to create a collection named "user" and one named "location"
-13. Once inside one of the collections select `Add Data` , `Import File` and select either the user.json file or locations.json file and add them to their respective collection.
+   
+2. Once you have Mongo fully installed on your device, the FlaskServery.py will create a new instance of a database when it is run for the first time.
+
+3. Alternatively you can install MangoDB Compass.
+
+4. Once fully installed click "Fill in connection fields individually" which is displayed under the "New Connection" heading
+
+5. The fields shown should be autofilled to Hostname: `localhost` and Port: `27017` by default
+
+6. Leave authentication as None and select `connect`
+
+7. Select the test database which will appear on the left hand side of the window
+
+8. Now select `Create Collection`
+
+9. You will need to create a collection named "user" and one named "location"
+
+10. Once inside one of the collections select `Add Data` , `Import File` and select either the user.json file or locations.json file and add them to their respective collection.
+
 14. The files needed to populate both collections can be found at` /Server/database_test_data`
+
+
 
 ## Development Environment
 
 When developing an Application I always get everything open on my laptop so I can clearly see everythiing that I am working on, below is a breakdown of my workspace:
+
+
 
 I need my Android device to have access to the localhost on my laptop so it can access the server locally.
 
@@ -118,16 +133,22 @@ I need my Android device to have access to the localhost on my laptop so it can 
 
    <img src="images/chrome.png" style="zoom:25%;" />
 
+   
+
 3. Now you should be able to access localhost by typing `localhost:<port>` into the address bar on the android device
 
 4. Now I open my FlaskServer.py file along with the terminal and start the server
 
    <img src="images/terminalsublime.png" style="zoom: 25%;" />
 
+   
+
 5. Lastly I open Android Studio where I can then run the app on my mobile device and observe each step from the UI to the database as they unfold.
 
    <img src="images/androidstudio.png" style="zoom: 25%;" />
 
+   
+   
    
 
 
