@@ -1,5 +1,6 @@
-# ![](images/SpotFinder.png style="zoom: 15%;")Overview 
+<img src="images/SpotFinder.png" style="zoom: 15%;" />
 
+# Overview 
 Spot Finder is an Android Application designed to help skaters locate popular spots around the globe that they can skate at. From a city plaza to a stair set located behind a rural building, this app is made to help the skater locate areas for them to skate. This means if someone was to travel to a new country/city they would be able to easily locate areas that local skaters have saved on the app without having to painfully search around massive areas for a certain type of spot they are looking for e.g skatepark, outdoor skatepark, stair set, hand rail, plaza etc.
 
 For a short screencast preview of this app working, navigate to the folder `Screencast` where you will find a short 2 minute video:
