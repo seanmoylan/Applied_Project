@@ -135,11 +135,11 @@ I need my Android device to have access to the localhost on my laptop so it can 
 
 |                                                              |                                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Register Page   <img src="screenshots/register.jpg" style="zoom: 15%;" /> | Login Page        <img src="screenshots/login.jpg" style="zoom: 15%;" /> |
+| Register Page   <img src="Screenshots/register.jpg" style="zoom: 15%;" /> | Login Page        <img src="Screenshots/login.jpg" style="zoom: 15%;" /> |
 |                                                              |                                                              |
-| Locations Page <img src="screenshots/locations.jpg" style="zoom: 15%;" /> | Location Details <img src="screenshots/location_details.jpg" style="zoom: 15%;" /> |
+| Locations Page <img src="Screenshots/locations.jpg" style="zoom: 15%;" /> | Location Details <img src="Screenshots/location_details.jpg" style="zoom: 15%;" /> |
 |                                                              |                                                              |
-| Save Location   <img src="screenshots/save_location.jpg" style="zoom: 15%;" /> | Location List      <img src="screenshots/my_locations.jpg" style="zoom: 15%;" /> |
+| Save Location   <img src="Screenshots/save_location.jpg" style="zoom: 15%;" /> | Location List      <img src="Screenshots/my_locations.jpg" style="zoom: 15%;" /> |
 |                                                              |                                                              |
 
 
