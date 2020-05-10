@@ -19,7 +19,7 @@ For a short screencast preview of this app working, navigate to the folder `Scre
 | --- | --- |
 | **Course** | BSc (Hons) in Software Development  |
 | **Module** |  Applied Project and Minor Dissertation |
-| **College** | [Galway-Mayo Institute of Technology](http://www.gmit.ie/) Galway |
+| **College** | [Galway-Mayo Institute of Technology](http://www.gmit.ie/) |
 | **Students** | Sean Moylan & Shane Moran |
 | **Project Supervisor** | Martin Kenirons |
 | **Module Supervisor** | John Healy |
@@ -32,14 +32,16 @@ For a short screencast preview of this app working, navigate to the folder `Scre
 | Name                                                         | Use                                                          |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Android Studio 3.6.1](https://developer.android.com/studio) | Front end android application development in java 8          |
-| [Python3](https://www.python.org/downloads/)                 | Language used to program the Server                          |
+| [Java 8](https://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html) | Language used for front end development                      |
+| [Python3](https://www.python.org/downloads/)                 | Language used to program flask server                        |
 | [Flask Server](https://flask.palletsprojects.com/en/1.1.x/)  | A micro web framework written in Python                      |
-| [MongoDB 4.2.2](https://www.mongodb.com/)                    | Database for Application                                     |
+| [MongoDB 4.2.2](https://www.mongodb.com/)                    | noSQL Database                                               |
 | [Sublime Text](https://www.sublimetext.com/)                 | Text editor used for coding in python                        |
 | [Retrofit](https://square.github.io/retrofit/)               | A HTTP client designed for Android and java                  |
 | [jackson](https://github.com/FasterXML/jackson)              | Widly used JSON parser for java                              |
 | [JSON](https://en.wikipedia.org/wiki/JSON)                   | File format used for data transfers between database, server and application |
 | [MongoDB Compass](https://www.mongodb.com/products/compass)  | A User Interface for use with MongoDB                        |
+| [Postman](https://www.postman.com/)                          | Application used to test calls to server                     |
 
 
 
@@ -90,10 +92,9 @@ Assuming you have all the technologies listed above installed on your device ple
 
 ### Database
 
-1. Please visit the site suited to your devise for a full breakdown of how to set up MongoDB
-2. [Windows](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
-3. [Mac](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
-4. [Linux](https://docs.mongodb.com/manual/administration/install-on-linux/)
+1. Please use link associated with your OS below for a full installation guide.
+
+   [Windows](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)  [Mac](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)  [Linux](https://docs.mongodb.com/manual/administration/install-on-linux/)
 5. Once you have Mongo fully installed on your device, the FlaskServery.py will create a new instance of a database when it is run for the first time.
 6. Alternatively you can install MangoDB Compass.
 7. Once fully installed click "Fill in connection fields individually" which is displayed under the "New Connection" heading
@@ -107,19 +108,21 @@ Assuming you have all the technologies listed above installed on your device ple
 
 ## Development Environment
 
-During the development of this Application I would always get everything open on my laptop so I can clearly see what iI am doing. 
+When developing an Application I always get everything open on my laptop so I can clearly see everythiing that I am working on, below is a breakdown of my workspace:
 
-1. To start I open Google Chrome on both my Android device and my laptop
+I need my Android device to have access to the localhost on my laptop so it can access the server locally.
 
-2. Type [chrome://inspect/#devices](chrome://inspect/#devices) which gives me a developer tool to alow my mobile device to access my laptops localhost where the server will be running
+1. To start open Google Chrome on both the Android device and laptop
+
+2. Type [chrome://inspect/#devices](chrome://inspect/#devices) in the address bar which gives a developer tool to allow the mobile device to access my laptops localhost where the server will be running
 
    <img src="images/chrome.png" style="zoom:25%;" />
 
-3. On my mobile device I can then enter the address https://localhost:5000 to access the server.
+3. Now you should be able to access localhost by typing `localhost:<port>` into the address bar on the android device
 
 4. Now I open my FlaskServer.py file along with the terminal and start the server
 
-   <img src="images/terminal&amp;sublime.png" style="zoom: 25%;" />
+   <img src="images/terminalsublime.png" style="zoom: 25%;" />
 
 5. Lastly I open Android Studio where I can then run the app on my mobile device and observe each step from the UI to the database as they unfold.
 
@@ -127,4 +130,17 @@ During the development of this Application I would always get everything open on
 
    
 
-   
+
+## App Screenshots
+
+|                                                              |                                                              |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Register Page   <img src="screenshots/register.jpg" style="zoom: 15%;" /> | Login Page        <img src="screenshots/login.jpg" style="zoom: 15%;" /> |
+|                                                              |                                                              |
+| Locations Page <img src="screenshots/locations.jpg" style="zoom: 15%;" /> | Location Details <img src="screenshots/location_details.jpg" style="zoom: 15%;" /> |
+|                                                              |                                                              |
+| Save Location   <img src="screenshots/save_location.jpg" style="zoom: 15%;" /> | Location List      <img src="screenshots/my_locations.jpg" style="zoom: 15%;" /> |
+|                                                              |                                                              |
+
+
+
